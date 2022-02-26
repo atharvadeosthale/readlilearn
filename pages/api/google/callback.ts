@@ -12,7 +12,9 @@ export default async function (
   await connect()
   passport.authenticate('google', (err, user, info) => {
     if (err || !user) {
-      return res.redirect('http://localhost:3000/?a=auth_fail')
+      return res.redirect(
+        `${process.env.NEXT_PUBLIC_FRONTEND_URL}/?a=auth_fail`
+      )
     }
 
     // set cookie and send redirect
@@ -20,6 +22,6 @@ export default async function (
       req,
       res,
     })
-    res.redirect('http://localhost:3000/dashboard')
+    res.redirect(`${process.env.NEXT_PUBLIC_FRONTEND_URL}/dashboard`)
   })(req, res, next)
 }

@@ -5,6 +5,7 @@ const UserSchema = new mongoose.Schema({
   email: String,
   accessToken: String,
   tokens: [String],
+  avatar: String,
   courses: [
     {
       id: String,

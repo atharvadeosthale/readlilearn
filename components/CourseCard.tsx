@@ -25,14 +25,14 @@ export default function CourseCard({
 }: Props) {
   const router: NextRouter = useRouter()
 
-  const redirectToBlog = (): void => {
-    router.push(`/posts/${slug}`)
+  const redirectToCourse = (): void => {
+    router.push(`/course/${slug}`)
   }
 
   return (
     <div
       className="flex w-full cursor-pointer flex-col overflow-hidden rounded-xl border-[1px] border-[#4e4e4e] md:h-72 md:flex-row"
-      onClick={redirectToBlog}
+      onClick={redirectToCourse}
     >
       <img
         alt={name}
@@ -44,7 +44,7 @@ export default function CourseCard({
         <div className="mt-2 text-2xl font-bold">
           {name} ({price} USD)
         </div>
-        <div className="line-clamp-3 md:line-clamp-2 mt-2 text-xl leading-normal">
+        <div className="mt-2 text-xl leading-normal line-clamp-3 md:line-clamp-2">
           {description}
         </div>
         <div className="mt-5 flex items-center justify-between">

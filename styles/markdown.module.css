@@ -1,0 +1,15 @@
+.markdown {
+  @apply mt-16 text-xl leading-loose;
+}
+
+.markdown ul {
+  @apply list-inside list-disc;
+}
+
+.markdown p {
+  @apply my-5;
+}
+
+.markdown h2 {
+  @apply text-3xl font-bold;
+}

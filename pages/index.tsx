@@ -47,7 +47,7 @@ const Home = ({ courses, auth }: Props) => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <Navbar loggedIn={auth.auth} />
+      <Navbar loggedIn={auth?.auth} />
       <Hero />
       <div className="relative mx-auto grid w-full max-w-7xl grid-cols-1 flex-col items-center justify-between gap-5 p-4 py-16 text-white xl:p-0 xl:py-16">
         {courses.map((course) => (

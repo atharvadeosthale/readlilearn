@@ -1,5 +1,6 @@
 import { removeCookies } from 'cookies-next'
 import Image from 'next/image'
+import Link from 'next/link'
 import React from 'react'
 
 interface Props {
@@ -23,7 +24,9 @@ export default function Navbar({ loggedIn }: Props) {
           className="rounded-full object-cover"
           alt="Atharva's Blog"
         />
-        <span className="ml-5 text-lg font-medium">Readlilearn</span>
+        <span className="ml-5 text-lg font-medium">
+          <Link href="/">Readlilearn</Link>
+        </span>
       </div>
       <div className="flex items-center">
         {loggedIn ? (

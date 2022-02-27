@@ -10,6 +10,18 @@
   @apply my-5;
 }
 
+.markdown a {
+  @apply text-blue-500;
+}
+
 .markdown h2 {
   @apply text-3xl font-bold;
+}
+
+.markdown pre {
+  @apply max-h-96 w-full overflow-y-scroll rounded-lg border-[1px] border-gray-500 bg-gray-700 p-5;
+}
+
+.markdown img {
+  @apply mx-auto max-w-5xl;
 }

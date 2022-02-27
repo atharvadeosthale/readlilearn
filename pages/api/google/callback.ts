@@ -23,6 +23,6 @@ export default async function (
       res,
     })
     setCookies('userId', user._id, { req, res })
-    res.redirect(`${process.env.NEXT_PUBLIC_FRONTEND_URL}/dashboard`)
+    res.redirect(`${process.env.NEXT_PUBLIC_FRONTEND_URL}/`)
   })(req, res, next)
 }

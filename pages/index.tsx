@@ -13,7 +13,8 @@ import path from 'path'
 import matter from 'gray-matter'
 import connect from '../lib/database'
 import { FC } from 'react'
-import { sortByDate } from '../utils'
+import { sortByDate, checkAuth } from '../utils'
+import mongoose from 'mongoose'
 
 interface Props {
   courses: [
@@ -28,9 +29,17 @@ interface Props {
       slug: string
     }
   ]
+  auth: {
+    auth: boolean
+    user: {
+      name: string
+      email: string
+      courses: [string]
+    }
+  }
 }
 
-const Home = ({ courses }: Props) => {
+const Home = ({ courses, auth }: Props) => {
   return (
     <div className="">
       <Head>
@@ -38,7 +47,7 @@ const Home = ({ courses }: Props) => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <Navbar />
+      <Navbar loggedIn={auth.auth} />
       <Hero />
       <div className="relative mx-auto grid w-full max-w-7xl grid-cols-1 flex-col items-center justify-between gap-5 p-4 py-16 text-white xl:p-0 xl:py-16">
         {courses.map((course) => (
@@ -65,6 +74,8 @@ export const getServerSideProps: GetServerSideProps = async (
   ctx: GetServerSidePropsContext
 ) => {
   try {
+    await connect()
+    const auth = await checkAuth(ctx.req, ctx.res)
     const courses = fs.readdirSync(path.join('courses'))
     console.log(courses)
 
@@ -81,6 +92,7 @@ export const getServerSideProps: GetServerSideProps = async (
 
     return {
       props: {
+        auth,
         courses: coursesData.sort(sortByDate),
       },
     }

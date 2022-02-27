@@ -81,7 +81,7 @@ export const getServerSideProps: GetServerSideProps = async (
 
     const coursesData = courses.map((slug) => {
       const fileContent = fs.readFileSync(
-        path.join('courses', slug, 'index.md'),
+        path.join(__dirname, '..', 'courses', slug, 'index.md'),
         'utf-8'
       )
       const { data, content } = matter(fileContent)
